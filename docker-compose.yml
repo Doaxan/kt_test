@@ -1,0 +1,11 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: uvicorn main:app --reload --workers 1 --host 0.0.0.0 --port 80
+    ports:
+      - "5000:80"
+    env_file:
+      - .env
+    volumes:
+      - "./rates.db:/rates.db"
